@@ -39,7 +39,8 @@ public class Main {
                 
                 long tempoInsVetor = 0, tempoInsABB = 0, tempoInsAVL = 0;
                 long tempoBuscaVetor = 0, tempoBuscaABB = 0, tempoBuscaAVL = 0;
-                
+                long tempoBubble = 0, tempoQuick = 0; // Novos acumuladores para ordenação
+
                 for (int i = 0; i < 5; i++) {
                     int[] dados = switch (ordem) {
                         case "Ordenada" -> gerarOrdenado(tamanho);
@@ -63,33 +64,30 @@ public class Main {
                     for (int v : dados) avl.inserir(v);
                     tempoInsAVL += (System.nanoTime() - inicio);
                     
-                    int[] alvos = {
-                        dados[0], 
-                        dados[tamanho - 1], 
-                        dados[tamanho / 2], 
-                        dados[random.nextInt(tamanho)], 
-                        dados[random.nextInt(tamanho)], 
-                        dados[random.nextInt(tamanho)], 
-                        -1 
-                    };
+                    int[] alvos = {dados[0], dados[tamanho - 1], dados[tamanho / 2], dados[random.nextInt(tamanho)], dados[random.nextInt(tamanho)], dados[random.nextInt(tamanho)], -1};
 
                     for (int alvo : alvos) {
-                        inicio = System.nanoTime(); 
-                        vetor.buscaSequencial(alvo); 
-                        tempoBuscaVetor += (System.nanoTime() - inicio);
-
-                        inicio = System.nanoTime(); 
-                        abb.buscar(alvo); 
-                        tempoBuscaABB += (System.nanoTime() - inicio);
-
-                        inicio = System.nanoTime(); 
-                        avl.buscar(alvo); 
-                        tempoBuscaAVL += (System.nanoTime() - inicio);
+                        inicio = System.nanoTime(); vetor.buscaSequencial(alvo); tempoBuscaVetor += (System.nanoTime() - inicio);
+                        inicio = System.nanoTime(); abb.buscar(alvo); tempoBuscaABB += (System.nanoTime() - inicio);
+                        inicio = System.nanoTime(); avl.buscar(alvo); tempoBuscaAVL += (System.nanoTime() - inicio);
                     }
+
+                    Vetor vQuick = new Vetor(tamanho);
+                    for(int v : dados) vQuick.adicionar(v);
+                    inicio = System.nanoTime();
+                    vQuick.quickSort();
+                    tempoQuick += (System.nanoTime() - inicio);
+
+                    Vetor vBubble = new Vetor(tamanho);
+                    for(int v : dados) vBubble.adicionar(v);
+                    inicio = System.nanoTime();
+                    vBubble.bubbleSort();
+                    tempoBubble += (System.nanoTime() - inicio);
                 }
 
                 System.out.println("Inserção Média (ns) -> Vetor: " + (tempoInsVetor/5) + " | ABB: " + (tempoInsABB/5) + " | AVL: " + (tempoInsAVL/5));
                 System.out.println("Busca Média (ns)    -> Vetor: " + (tempoBuscaVetor/35) + " | ABB: " + (tempoBuscaABB/35) + " | AVL: " + (tempoBuscaAVL/35));
+                System.out.println("Ordenação Média (ns)-> Bubble: " + (tempoBubble/5) + " | Quick: " + (tempoQuick/5));
             }
         }
     }

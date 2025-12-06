@@ -13,9 +13,9 @@ O código foi refatorado para facilitar a execução de testes pesados de forma 
 
 - `src/Estrutura`: Contém as implementações das estruturas de dados (`Vetor`, `ArvoreBinaria`, `ArvoreAvl`).
 - `src/principal`: Contém a lógica de testes:
-  - [cite_start]`MotorTeste.java`: O "coração" do projeto, contendo a lógica de medição de tempo e execução das baterias de testes[cite: 3].
-  - [cite_start]`GeradorDados.java`: Classe utilitária responsável por criar os vetores de dados (ordenados, inversos e aleatórios)[cite: 6].
-  - [cite_start]`Teste100.java`, `Teste1000.java`, `Teste10000.java`: Executáveis individuais para cada tamanho de massa de dados[cite: 1, 8, 9].
+  - `MotorTeste.java`: O "coração" do projeto, contendo a lógica de medição de tempo e execução das baterias de testes.
+  - `GeradorDados.java`: Classe utilitária responsável por criar os vetores de dados (ordenados, inversos e aleatórios).
+  - `Teste100.java`, `Teste1000.java`, `Teste10000.java`: Executáveis individuais para cada tamanho de massa de dados.
 
 ## Como Compilar e Executar
 Certifique-se de ter o Java (JDK) instalado. No terminal, na raiz do projeto:

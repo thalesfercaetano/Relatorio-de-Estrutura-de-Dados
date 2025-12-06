@@ -39,7 +39,8 @@ public class Main {
                 
                 long tempoInsVetor = 0, tempoInsABB = 0, tempoInsAVL = 0;
                 long tempoBuscaVetor = 0, tempoBuscaABB = 0, tempoBuscaAVL = 0;
-                long tempoBubble = 0, tempoQuick = 0; // Novos acumuladores para ordenação
+                long tempoBubble = 0;
+                long tempoQuick = 0;
 
                 for (int i = 0; i < 5; i++) {
                     int[] dados = switch (ordem) {
